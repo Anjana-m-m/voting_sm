@@ -4,7 +4,7 @@ $host = 'localhost';
 $username = 'root';
 $password = '';
 $dbname = 'voting_system';
-$port = 3307;
+$port = 3306;
 
 // Create connection
 $conn = mysqli_connect($host, $username, $password, '', $port);

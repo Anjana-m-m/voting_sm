@@ -25,7 +25,17 @@ while ($row = mysqli_fetch_assoc($result)) {
     $results[] = $row;
 }
 
-$winner = $results[0]['name'] ?? 'No votes yet';
+$winner = 'No votes yet'; // Default value
+
+// Check if there are any results and if the top candidate has at least one vote
+if (isset($results[0]) && $results[0]['vote_count'] > 0) {
+    // Check if there is a second candidate and if their vote count is the same as the first
+    if (isset($results[1]) && $results[0]['vote_count'] == $results[1]['vote_count']) {
+        $winner = 'NIL (Tie)'; // It's a tie
+    } else {
+        $winner = $results[0]['name']; // We have a clear winner
+    }
+}
 ?>
 
 <!DOCTYPE html>
