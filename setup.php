@@ -78,9 +78,9 @@ if (mysqli_query($conn, $sql)) {
 
 // Insert sample data into candidates
 $sql = "INSERT INTO candidates (name) VALUES
-('John Doe'),
-('Jane Smith'),
-('Emily Clark')
+('Ismail'),
+('Easwar'),
+('Sreehari')
 ON DUPLICATE KEY UPDATE name=name";
 if (mysqli_query($conn, $sql)) {
     echo "Sample candidates inserted successfully.<br>";

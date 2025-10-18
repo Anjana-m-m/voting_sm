@@ -1,16 +1,28 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f6f9;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    
+    /* Corrected background-image declaration with overlay and sizing */
+    background-image: 
+        /* This is the crucial semi-transparent white overlay for readability */
+        linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+        /* Your image file. Make sure the path is correct relative to style.css */
+        url('protest.png');
+    
+    background-size: cover;          /* Ensures the image covers the entire page */
+    background-position: center;     /* Centers the image within the viewport */
+    background-repeat: no-repeat;    /* Prevents the image from repeating */
+    background-attachment: fixed;    /* Keeps the background fixed when scrolling */
 }
 
+/* Your existing .container styles are good, providing a solid background for content */
 .container {
-    background: white;
+    background: rgba(255, 255, 255, 0.7);; /* This solid white background helps content stand out */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -18,7 +30,6 @@ body {
     max-width: 400px;
     text-align: center;
 }
-
 h2 {
     margin-bottom: 20px;
     color: #2c3e50;
@@ -34,7 +45,7 @@ input[type="text"], input[type="password"], button {
 }
 
 button {
-    background-color: #e67e22;
+    background-color: #f0000c;
     color: white;
     font-weight: bold;
     border: none;
@@ -70,4 +81,9 @@ th, td {
 
 th {
     background-color: #f8f9fa;
+}
+.final{
+    padding: 15%;
+    margin-top: 15%;
+    
 }

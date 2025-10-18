@@ -1,14 +1,13 @@
 <?php
+session_start(); // Start session if not already
+date_default_timezone_set('Asia/Kolkata'); // Ensure timezone is set here too
 include 'db.php';
 
-$voting_deadline = '2025-10-14 17:00:00';
+$voting_deadline = '2025-10-18 02:25:00'; // Keep this consistent
 $now = date('Y-m-d H:i:s');
 
-if ($now < $voting_deadline) {
-    echo "<h2>Results will be available after $voting_deadline</h2>";
-    echo "<p><a href='vote.php'>Go to Voting</a> | <a href='logout.php'>Logout</a></p>";
-    exit;
-}
+// --- Removed the 'exit' condition here ---
+// Results will always be shown, but we'll indicate if voting is still open.
 
 // Get results
 $sql = "
@@ -49,6 +48,13 @@ if (isset($results[0]) && $results[0]['vote_count'] > 0) {
     <div class="container">
         <h2>🎉 Election Results</h2>
         <p><strong>Voting ended on: <?= $voting_deadline ?></strong></p>
+
+        <?php if ($now < $voting_deadline): ?>
+            <p style="color: green; font-weight: bold;">Voting is still active! <a href="vote.php">Go to Voting Page</a></p>
+        <?php else: ?>
+            <p style="color: red; font-weight: bold;">Voting has concluded.</p>
+        <?php endif; ?>
+
         <table>
             <tr><th>Candidate</th><th>Votes</th></tr>
             <?php foreach ($results as $r): ?>
